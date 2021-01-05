@@ -8,15 +8,25 @@ import { HttpRequestService } from "@services/http-request.service";
 export class UserComponent implements OnInit {
 
   data: any = []
+  total: number = 0
+  limit: number = 10
   constructor(
     private http: HttpRequestService
   ) { }
 
   ngOnInit(): void {
-      this.http.get("user").then((response: any) => {
-        this.data = response.data
-        console.log(this.data)
-      })
+      this.getData(this.limit)
+  }
+
+  getData(limit: number) {
+    this.http.get("user?limit=" + limit).then((response: any) => {
+      this.data = response.data
+      this.total = response.total
+    })
+  }
+  show()
+  {
+    this.getData(this.limit)
   }
 
 }

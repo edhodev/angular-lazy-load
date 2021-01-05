@@ -14,6 +14,7 @@ export class HttpRequestService {
       "app-id": "5ff400160c997d269b0b9177"
     })
   };
+
   constructor(private httpClient: HttpClient, private spinner: NgxSpinnerService) { }
 
   async post(data: any = null, url: string){
