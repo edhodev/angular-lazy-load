@@ -16,6 +16,10 @@ const routes: Routes = [
   {
     path:'post',
     component: PostComponent
+  },
+  {
+    path: 'post/user/:id',
+    component: PostComponent
   }
 ];
 

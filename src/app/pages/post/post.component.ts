@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpRequestService } from "@services/http-request.service";
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -8,6 +9,7 @@ import { HttpRequestService } from "@services/http-request.service";
 })
 export class PostComponent implements OnInit {
 
+  id: any = ""
   data: any = []
   total: number = 0
   limit: number = 10
@@ -16,15 +18,26 @@ export class PostComponent implements OnInit {
   totalPage: number = 0
 
   constructor(
-    private http: HttpRequestService
-  ) { }
+    private http: HttpRequestService,
+    private activateRoute: ActivatedRoute,
+  ) { 
+    this.activateRoute.params.subscribe(params => {
+      this.id = params['id']
+    })
+  }
 
   ngOnInit(): void {
     this.getData(this.limit, this.page)
   }
 
   getData(limit: number, page: number) {
-    this.http.get('post?limit=' + limit + "&page=" + page).then((response: any) => {
+    let url = "" 
+    if(this.id == "") {
+      url = 'post?limit=' + limit + "&page=" + page
+    } else {
+      url = 'user/' + this.id + '/post?limit=' + limit + "&page=" + page
+    }
+    this.http.get(url).then((response: any) => {
       this.listPage = []
       this.data = response.data
       this.total = response.total
