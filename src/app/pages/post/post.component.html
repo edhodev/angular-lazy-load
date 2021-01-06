@@ -2,9 +2,8 @@
     <div class="col-lg-12">
         <span class="text-muted font-weight-bold">TAGS</span>
         <br>
-        <button type="button" class="btn btn-light-danger" style="margin-top: 10px;">
-            <i class="fa fa-trash"></i>
-            Dog <span class="badge badge-light"></span>
+        <button type="button" class="btn btn-light-danger" style="margin-top: 10px;" *ngIf="tag != undefined ">
+            {{ tag }} <span class="badge badge-light"></span>
         </button>
     </div>
 </div>

@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'trending',
     component: TrendingComponent
+  },
+  {
+    path: 'post/tag/:tag',
+    component: PostComponent
   }
 ];
 

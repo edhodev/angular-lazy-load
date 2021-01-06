@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class PostComponent implements OnInit {
 
   id: any = ""
+  tag: any 
   data: any = []
   total: number = 0
   limit: number = 10
@@ -23,6 +24,7 @@ export class PostComponent implements OnInit {
   ) { 
     this.activateRoute.params.subscribe(params => {
       this.id = params['id']
+      this.tag = params['tag']
     })
   }
 
@@ -34,7 +36,11 @@ export class PostComponent implements OnInit {
     let url = "" 
     if(this.id == undefined) {
       url = 'post?limit=' + limit + "&page=" + page
-    } else {
+    }
+    if(this.tag != undefined) {
+      url = 'tag/' + this.tag +'/post?limit=' + limit + "&page=" + page
+    }
+    if(this.id != undefined ) {
       url = 'user/' + this.id + '/post?limit=' + limit + "&page=" + page
     }
     this.http.get(url).then((response: any) => {
