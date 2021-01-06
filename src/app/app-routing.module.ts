@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from "./pages/user/user.component";
 import { ProfileComponent } from "./pages/profile/profile.component";
 import { PostComponent } from "./pages/post/post.component";
+import { CommentComponent } from "./pages/comment/comment.component";
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'post/user/:id',
     component: PostComponent
+  },
+  {
+    path: 'post/comment/:id',
+    component: CommentComponent
   }
 ];
 

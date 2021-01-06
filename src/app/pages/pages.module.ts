@@ -5,9 +5,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { PostComponent } from './post/post.component';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
-  declarations: [UserComponent, ProfileComponent, PostComponent],
+  declarations: [UserComponent, ProfileComponent, PostComponent, CommentComponent],
   imports: [
     CommonModule,
     FormsModule,
