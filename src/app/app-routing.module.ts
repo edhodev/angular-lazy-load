@@ -4,6 +4,7 @@ import { UserComponent } from "./pages/user/user.component";
 import { ProfileComponent } from "./pages/profile/profile.component";
 import { PostComponent } from "./pages/post/post.component";
 import { CommentComponent } from "./pages/comment/comment.component";
+import { TrendingComponent } from "./pages/trending/trending.component";
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'post/comment/:id',
     component: CommentComponent
+  },
+  {
+    path: 'trending',
+    component: TrendingComponent
   }
 ];
 

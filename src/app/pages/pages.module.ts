@@ -6,9 +6,10 @@ import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { PostComponent } from './post/post.component';
 import { CommentComponent } from './comment/comment.component';
+import { TrendingComponent } from './trending/trending.component';
 
 @NgModule({
-  declarations: [UserComponent, ProfileComponent, PostComponent, CommentComponent],
+  declarations: [UserComponent, ProfileComponent, PostComponent, CommentComponent, TrendingComponent],
   imports: [
     CommonModule,
     FormsModule,
