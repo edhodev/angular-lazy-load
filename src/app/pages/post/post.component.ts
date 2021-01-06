@@ -32,7 +32,7 @@ export class PostComponent implements OnInit {
 
   getData(limit: number, page: number) {
     let url = "" 
-    if(this.id == "") {
+    if(this.id == undefined) {
       url = 'post?limit=' + limit + "&page=" + page
     } else {
       url = 'user/' + this.id + '/post?limit=' + limit + "&page=" + page
