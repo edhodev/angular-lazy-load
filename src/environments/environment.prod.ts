@@ -1,4 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
   host: 'https://dummyapi.io/data/api/'
 };
