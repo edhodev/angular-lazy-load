@@ -65,4 +65,56 @@ export class PostComponent implements OnInit {
     this.getData(this.limit, item-1)
   }
 
+  previous() {
+    let previousePage = this.page - 1;
+    if(previousePage >= 0) {
+      let url = "" 
+      if(this.id == undefined) {
+        url = 'post?limit=' + this.limit + "&page=" + previousePage
+      }
+      if(this.tag != undefined) {
+        url = 'tag/' + this.tag +'/post?limit=' + this.limit + "&page=" + previousePage
+      }
+      if(this.id != undefined ) {
+        url = 'user/' + this.id + '/post?limit=' + this.limit + "&page=" + previousePage
+      }
+      this.http.get(url).then((response: any) => {
+        this.listPage = []
+        this.data = response.data
+        this.total = response.total
+        this.totalPage = this.total / this.limit
+        this.page = response.page
+        for (let index = 0; index < this.totalPage; index++) {
+          this.listPage.push(index+1)
+        }
+      })
+    }
+  }
+
+  next() {
+    let nextPage = this.page + 1;
+    if(nextPage < this.totalPage) {
+      let url = "" 
+      if(this.id == undefined) {
+        url = 'post?limit=' + this.limit + "&page=" + nextPage
+      }
+      if(this.tag != undefined) {
+        url = 'tag/' + this.tag +'/post?limit=' + this.limit + "&page=" + nextPage
+      }
+      if(this.id != undefined ) {
+        url = 'user/' + this.id + '/post?limit=' + this.limit + "&page=" + nextPage
+      }
+      this.http.get(url).then((response: any) => {
+        this.listPage = []
+        this.data = response.data
+        this.total = response.total
+        this.totalPage = this.total / this.limit
+        this.page = response.page
+        for (let index = 0; index < this.totalPage; index++) {
+          this.listPage.push(index+1)
+        }
+      })
+    }
+  }
+
 }
