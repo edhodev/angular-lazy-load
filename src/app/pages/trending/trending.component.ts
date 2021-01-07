@@ -45,4 +45,35 @@ export class TrendingComponent implements OnInit {
     this.getData(this.limit, item-1)
   }
 
+  previous() {
+    let previousePage = this.page - 1;
+    if(previousePage >= 0) {
+      this.http.get("tag?limit=" + this.limit + "&page=" + previousePage).then((response: any) => {
+        this.listPage = []
+        this.data = response.data
+        this.total = response.total
+        this.totalPage = this.total / this.limit
+        this.page = response.page
+        for (let index = 0; index < this.totalPage; index++) {
+          this.listPage.push(index+1)
+        }
+      })
+    }
+  }
+
+  next() {
+    let nextPage = this.page + 1;
+    if(nextPage < this.totalPage) {
+      this.http.get("tag?limit=" + this.limit + "&page=" + nextPage).then((response: any) => {
+        this.listPage = []
+        this.data = response.data
+        this.total = response.total
+        this.totalPage = this.total / this.limit
+        this.page = response.page
+        for (let index = 0; index < this.totalPage; index++) {
+          this.listPage.push(index+1)
+        }
+      })
+    }
+  }
 }
